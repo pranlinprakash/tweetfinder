@@ -18,8 +18,20 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
-
 var server = http.createServer(app);
+
+const { Server } = require("socket.io");
+const io = new Server(server, { transports: ['polling','websocket'],
+allowUpgrades:true,
+forceJSONP:true,
+jsonp:true,
+forceNew: true });
+
+io.on('connection', function (socket) {
+  socket.on('tweets', function (data) {
+    io.emit('tweet', data);
+  });
+});
 
 /**
  * Listen on provided port, on all network interfaces.
