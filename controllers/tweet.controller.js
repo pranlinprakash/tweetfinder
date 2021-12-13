@@ -1,12 +1,13 @@
 var Twit = require('twit')
 const io = require('socket.io-client');
+require('dotenv').config()
 const protocol='http://';
 const secure=false;
 var T = new Twit({
-    consumer_key:         'o03xpPoMdRgYiimnxQQGmMmaE',
-    consumer_secret:      'Y772caIYlrMItga4RP8Nh0cmS7iVZ5kLbVud6Hrn1UmCS6IOtD',
-    access_token:         '942601012916797441-WAIgNCi8Xd9HtiYcfajbfKa7vYSG0aQ',
-    access_token_secret:  'ofP5qUbNeT1ShyJqUWR1Tb09H5szttIAqZJHtZfxsISyl'
+    consumer_key:         process.env.TWITTER_CONSUMER_KEY,
+    consumer_secret:      process.env.TWITTER_CONSUMER_SECRET,
+    access_token:         process.env.TWITTER_ACCESS_TOKEN,
+    access_token_secret:  process.env.TWITTER_TOKEN_SECRET
   })
 
 _this=this;
